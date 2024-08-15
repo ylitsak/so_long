@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 13:04:00 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:39:56 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_game_data
 void	check_valid_map(int argc, char *argv[], t_game_data *game);
 int		map_exists(char *input);
 int		size_of_map(char *filename);
-char	*store_map(char *map, t_game_data *game);
+char	*store_map(char *map, int size);
 void	perror_malloc(void);
 void	perror_read(int fd);
 

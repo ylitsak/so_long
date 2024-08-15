@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:58:08 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 13:06:29 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:39:32 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	size_of_map(char *filename)
 	return (size);
 }
 
-char	*store_map(char *map, t_game_data *game)
+char	*store_map(char *map, int size)
 {
 	int		fd;
 	int		bytes_read;
@@ -42,14 +42,14 @@ char	*store_map(char *map, t_game_data *game)
 
 	fd = map_exists(map);
 	total_read = 0;
-	buffer = malloc((game->map_size + 1) * sizeof(char));
+	buffer = malloc((size + 1) * sizeof(char));
 	if (!buffer)
 		perror_malloc();
-	bytes_read = read(fd, buffer + total_read, game->map_size - total_read);
+	bytes_read = read(fd, buffer + total_read, size - total_read);
 	while (bytes_read > 0)
 	{
 		total_read += bytes_read;
-		bytes_read = read(fd, buffer + total_read, game->map_size - total_read);
+		bytes_read = read(fd, buffer + total_read, size - total_read);
 	}
 	if (bytes_read == -1)
 	{
@@ -57,6 +57,6 @@ char	*store_map(char *map, t_game_data *game)
 		perror_read(fd);
 	}
 	close(fd);
-	buffer[game->map_size] = '\0';
+	buffer[size] = '\0';
 	return (buffer);
 }
