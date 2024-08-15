@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 20:25:23 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:24:42 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_game_data
 {
 	char	*map_1d;
-	char 	**map_2d;
+	char	**map_2d;
 	int		map_size;
 	int		x;
 	int		y;
@@ -39,10 +39,9 @@ void	validate_map(char **map);
 void	perror_malloc(void);
 void	perror_read(int fd);
 void	perror_rectangular(char **map);
+void	perror_wall(char **map);
 //utility_functions.c
 void	free_all(char **free_data);
 void	print_map(char **map);
 
-
 #endif
-  

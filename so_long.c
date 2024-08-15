@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 10:24:38 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 11:16:48 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:02:45 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_game_data game = { 0 };
+	t_game_data	game = { 0 };
 	check_valid_map(argc, argv, &game);
 	return (0);
 }

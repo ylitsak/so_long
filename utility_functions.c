@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:32:53 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 20:27:10 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:03:09 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_all(char **free_data)
 	}
 	free(free_data);
 }
+
 void	print_map(char **map)
 {
 	int	i;
