@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I ./libft -I ./minilibx-linux
 MLX = ./minilibx-linux/libmlx.a
 X_LINK = -L/usr/X11/lib -lXext -lX11 -lm -lbsd
-SRCS = so_long.c check_map.c map_to_memory.c error_message.c
+SRCS = so_long.c check_map.c map_to_memory.c error_message.c utility_functions.c parse_map.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./libft/libft.a
 

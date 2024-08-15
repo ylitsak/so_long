@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message.c                                    :+:      :+:    :+:   */
+/*   utility_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 12:55:03 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 20:23:36 by saylital         ###   ########.fr       */
+/*   Created: 2024/08/15 18:32:53 by saylital          #+#    #+#             */
+/*   Updated: 2024/08/15 20:27:10 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	perror_malloc(void)
+void	free_all(char **free_data)
 {
-	ft_printf("Error\nMalloc failed\n");
-	exit(EXIT_FAILURE);
-}
+	int	i;
 
-void	perror_read(int fd)
-{
-	perror("Error\nRead failed");
-	close(fd);
-	exit(EXIT_FAILURE);
+	i = 0;
+	while (free_data[i])
+	{
+		free(free_data[i]);
+		i++;
+	}
+	free(free_data);
 }
-void	perror_rectangular(char **map)
+void	print_map(char **map)
 {
-	ft_printf("Error\nMap is not rectangular\n");
-	free_all(map);
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
 }

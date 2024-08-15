@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 13:39:56 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 20:25:23 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,22 @@ typedef struct s_game_data
 	int		collectibles;
 }	t_game_data;
 
+//check_map.c
 void	check_valid_map(int argc, char *argv[], t_game_data *game);
 int		map_exists(char *input);
+//map_to_memory.c
 int		size_of_map(char *filename);
 char	*store_map(char *map, int size);
+//parse_map.c
+void	validate_map(char **map);
+//error_messages.c
 void	perror_malloc(void);
 void	perror_read(int fd);
+void	perror_rectangular(char **map);
+//utility_functions.c
+void	free_all(char **free_data);
+void	print_map(char **map);
+
 
 #endif
   

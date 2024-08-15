@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 11:02:39 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 13:53:51 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 20:26:51 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@ void	check_valid_map(int argc, char *argv[], t_game_data *game)
 {
 	check_map_args(argc, argv);
 	game->map_size = size_of_map(argv[1]);
-	ft_printf("map size: %d\n", game->map_size);
 	game->map_1d = store_map(argv[1], game->map_size);
-	ft_printf("%s\n", game->map_1d);
+	game->map_2d = ft_split(game->map_1d, '\n');
 	free(game->map_1d);
-	
+	validate_map(game->map_2d);
+	print_map(game->map_2d);
+	free_all(game->map_2d);
 	return ;
 }
