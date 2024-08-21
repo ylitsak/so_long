@@ -6,11 +6,24 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:58:08 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 13:39:32 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:35:33 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	map_exists(char *input)
+{
+	int	fd;
+
+	fd = open(input, O_RDONLY);
+	if ((fd) == -1)
+	{
+		perror("Error\nOpening map");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
 
 int	size_of_map(char *filename)
 {

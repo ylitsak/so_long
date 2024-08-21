@@ -6,24 +6,11 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 11:02:39 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 21:04:54 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:34:59 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	map_exists(char *input)
-{
-	int	fd;
-
-	fd = open(input, O_RDONLY);
-	if ((fd) == -1)
-	{
-		perror("Error\nOpening map");
-		exit(EXIT_FAILURE);
-	}
-	return (fd);
-}
 
 static int	ends_with_ber(const char *input, const char *ber)
 {
