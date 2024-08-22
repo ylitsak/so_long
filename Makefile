@@ -28,7 +28,7 @@ clean:
 	@$(MAKE) clean -C ./MLX42
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(LIBFT) $(MLXBUILD)
 	@$(MAKE) fclean -C ./libft
 	@$(MAKE) fclean -C ./MLX42
 

@@ -6,18 +6,18 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 12:25:26 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/22 13:18:31 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	valid_map_elements(t_game_data *game, char **map, int rows, int cols)
+static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 {
-	while(map[cols])
+	while (map[cols++])
 	{
 		rows = 0;
-		while(map[cols][rows])
+		while (map[cols][rows])
 		{
 			if (map[cols][rows] == 'P')
 				game->player += 1;
@@ -27,9 +27,18 @@ static void	valid_map_elements(t_game_data *game, char **map, int rows, int cols
 				game->exit += 1;
 			rows++;
 		}
-		cols++;
 	}
-	printf("PLAYER:%d\nCOLLECTIBLES:%d\nEXIT:%d\n", game->player, game->collectibles, game->exit);
+	if (game->player != 1 || game->collectibles < 1 || game->exit != 1)
+	{
+		if (game->player != 1)
+			ft_printf("Error\nInvalid player count: %d\n", game->player);
+		if (game->collectibles < 1)
+			ft_printf("Error\nInvalid collectibles%s\n", game->collectibles);
+		if (game->exit != 1)
+			ft_printf("Error\nInvalid exit count: %d\n", game->exit);
+		free_all(map);
+		exit(EXIT_FAILURE);
+	}
 }
 
 static void	wall_check(char **map, int rows, int cols)
@@ -82,13 +91,14 @@ static void	is_rectangular(char **map, int rows, int cols)
 
 void	validate_map(t_game_data *game)
 {
-	int	rows;
-	int	cols;
-	char	**map = game->map_2d;
+	int		rows;
+	int		cols;
+	char	**map;
 
+	map = game->map_2d;
 	rows = 0;
 	cols = 0;
 	is_rectangular(map, rows, cols);
 	wall_check(map, rows, cols);
-	valid_map_elements(game, map, rows, cols);
+	valid_map_element(game, map, rows, cols);
 }
