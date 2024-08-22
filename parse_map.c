@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 16:11:41 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:27:36 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	perror_element(char **map, int player, int collect, int m_exit)
 {
-		if (player != 1)
-	 		ft_printf("Error\nInvalid player count: %d\n", player);
-	 	if (collect < 1)
-	 		ft_printf("Error\nInvalid collectibles: %d\n", collect);
-	 	if (m_exit != 1)
-	 		ft_printf("Error\nInvalid exit count: %d\n", m_exit);
-	 	free_all(map);
-	 	exit(EXIT_FAILURE);
+	if (player != 1)
+		ft_printf("Error\nInvalid player count: %d\n", player);
+	if (collect < 1)
+		ft_printf("Error\nInvalid collectibles: %d\n", collect);
+	if (m_exit != 1)
+		ft_printf("Error\nInvalid exit count: %d\n", m_exit);
+	free_all(map);
+	exit(EXIT_FAILURE);
 }
 
 static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
@@ -43,7 +43,7 @@ static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 		}
 		cols++;
 	}
-	 if (game->player != 1 || game->collectibles < 1 || game->map_exit != 1)
+	if (game->player != 1 || game->collectibles < 1 || game->map_exit != 1)
 		perror_element(map, game->player, game->collectibles, game->map_exit);
 }
 
