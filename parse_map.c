@@ -6,16 +6,31 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/15 22:08:42 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:25:26 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// static void	valid_map_elements(char **map)
-// {
-
-// }
+static void	valid_map_elements(t_game_data *game, char **map, int rows, int cols)
+{
+	while(map[cols])
+	{
+		rows = 0;
+		while(map[cols][rows])
+		{
+			if (map[cols][rows] == 'P')
+				game->player += 1;
+			else if (map[cols][rows] == 'C')
+				game->collectibles += 1;
+			else if (map[cols][rows] == 'E')
+				game->exit += 1;
+			rows++;
+		}
+		cols++;
+	}
+	printf("PLAYER:%d\nCOLLECTIBLES:%d\nEXIT:%d\n", game->player, game->collectibles, game->exit);
+}
 
 static void	wall_check(char **map, int rows, int cols)
 {
@@ -65,14 +80,15 @@ static void	is_rectangular(char **map, int rows, int cols)
 	}
 }
 
-void	validate_map(char **map)
+void	validate_map(t_game_data *game)
 {
 	int	rows;
 	int	cols;
+	char	**map = game->map_2d;
 
 	rows = 0;
 	cols = 0;
 	is_rectangular(map, rows, cols);
 	wall_check(map, rows, cols);
-	// valid_map_elements(map);
+	valid_map_elements(game, map, rows, cols);
 }
