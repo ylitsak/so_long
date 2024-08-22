@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 12:12:27 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:07:25 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_game_data
 	int		map_size;
 	int		x;
 	int		y;
+	int		player_pos_x;
+	int		player_pos_y;
 	int		player;
 	int		collectibles;
 	int		exit;
@@ -36,6 +38,8 @@ int		size_of_map(char *filename);
 char	*store_map(char *map, int size);
 //parse_map.c
 void	validate_map(t_game_data *game);
+//check_map_path
+void	validate_map_path(t_game_data *game);
 //error_messages.c
 void	perror_malloc(void);
 void	perror_read(int fd);

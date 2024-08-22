@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 13:18:31 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:05:07 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 {
-	while (map[cols++])
+	while (map[cols])
 	{
 		rows = 0;
 		while (map[cols][rows])
@@ -27,18 +27,19 @@ static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 				game->exit += 1;
 			rows++;
 		}
+		cols++;
 	}
-	if (game->player != 1 || game->collectibles < 1 || game->exit != 1)
-	{
-		if (game->player != 1)
-			ft_printf("Error\nInvalid player count: %d\n", game->player);
-		if (game->collectibles < 1)
-			ft_printf("Error\nInvalid collectibles%s\n", game->collectibles);
-		if (game->exit != 1)
-			ft_printf("Error\nInvalid exit count: %d\n", game->exit);
-		free_all(map);
-		exit(EXIT_FAILURE);
-	}
+	 if (game->player != 1 || game->collectibles < 1 || game->exit != 1)
+	 {
+	 	if (game->player != 1)
+	 		ft_printf("Error\nInvalid player count: %d\n", game->player);
+	 	if (game->collectibles < 1)
+	 		ft_printf("Error\nInvalid collectibles%s\n", game->collectibles);
+	 	if (game->exit != 1)
+	 		ft_printf("Error\nInvalid exit count: %d\n", game->exit);
+	 	free_all(map);
+	 	exit(EXIT_FAILURE);
+	 }
 }
 
 static void	wall_check(char **map, int rows, int cols)
