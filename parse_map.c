@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 16:27:36 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/25 20:17:01 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 			if (!ft_strchr("01PEC", map[cols][rows]))
 				perror_map(map, "Invalid characters in map\n");
 			if (map[cols][rows] == 'P')
+			{
 				game->player += 1;
+				game->player_pos_y = cols;
+				game->player_pos_x = rows;
+			}
 			else if (map[cols][rows] == 'C')
 				game->collectibles += 1;
 			else if (map[cols][rows] == 'E')
@@ -74,14 +78,14 @@ static void	wall_check(char **map, int rows, int cols)
 	}
 }
 
-static void	is_rectangular(char **map, int rows, int cols)
+static void	is_rectangular(t_game_data *game, char **map, int rows, int cols)
 {
 	int	first_row;
 
 	first_row = ft_strlen(map[0]);
 	while (map[cols])
 		cols++;
-	if (cols < 2)
+	if (cols < 2 || first_row < 2)
 		perror_map(map, "Map is not rectangular\n");
 	cols = 0;
 	while (map[cols])
@@ -93,6 +97,8 @@ static void	is_rectangular(char **map, int rows, int cols)
 		}
 		cols++;
 	}
+	game->map_rows = first_row;
+	game->map_cols = cols;
 }
 
 void	validate_map(t_game_data *game)
@@ -104,7 +110,7 @@ void	validate_map(t_game_data *game)
 	map = game->map_2d;
 	rows = 0;
 	cols = 0;
-	is_rectangular(map, rows, cols);
+	is_rectangular(game, map, rows, cols);
 	wall_check(map, rows, cols);
 	valid_map_element(game, map, rows, cols);
 }

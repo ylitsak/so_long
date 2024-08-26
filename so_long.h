@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/22 16:10:51 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/26 10:17:52 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,26 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+typedef struct s_path_check
+{
+	int		exit_found;
+	int		collectibles_found;
+	char	**map_copy;
+}	t_path_check;
+
 typedef struct s_game_data
 {
-	char	*map_1d;
-	char	**map_2d;
-	int		map_size;
-	int		x;
-	int		y;
-	int		player_pos_x;
-	int		player_pos_y;
-	int		player;
-	int		collectibles;
-	int		map_exit;
+	char			*map_1d;
+	char			**map_2d;
+	int				map_size_buf;
+	int				map_rows;
+	int				map_cols;
+	int				player_pos_x;
+	int				player_pos_y;
+	int				player;
+	int				collectibles;
+	int				map_exit;
+	t_path_check	path_check;
 }	t_game_data;
 
 //check_map.c
