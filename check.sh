@@ -1,3 +1,3 @@
 #!/bin/bash
 
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long "map1.ber"
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long "map3.ber"
