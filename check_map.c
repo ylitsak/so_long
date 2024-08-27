@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 11:02:39 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/26 14:09:34 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:14:38 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ends_with_ber(const char *input, const char *ber)
 	whole_string = ft_strlen(input);
 	ber_len = ft_strlen(ber);
 	check_ber = input + whole_string - ber_len;
-	if (ft_strncmp(check_ber, ber, ber_len) == 0)
+	if ((ft_strncmp(check_ber, ber, ber_len) == 0) && ft_strlen(input) > 4)
 		return (0);
 	return (1);
 }

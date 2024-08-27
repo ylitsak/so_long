@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/26 14:38:03 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:11:44 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # define WIDTH 512
-# define HEIGTH 512
+# define HEIGHT 512
 
 typedef struct s_game_data
 {

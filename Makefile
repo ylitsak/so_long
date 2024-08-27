@@ -7,22 +7,21 @@ SRCS = so_long.c check_map.c map_to_memory.c error_message.c utility_functions.c
 		validate_map_path.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./libft/libft.a
-LIBMLX = ./MLX42
-MLXBUILD = ./MLX42/build/libmlx42.a
+MLX42 = ./MLX42/build/libmlx42.a
 
-all: libmlx $(NAME)
+all: $(NAME)
 
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
 
-$(MLXBUILD):
-	@$(MAKE) -C ./MLX42
+$(MLX42):
+	cd MLX42 && cmake -B build
+	cd MLX42 && cmake --build build -j4
+	@$(MAKE) -C MLX42/build -j4
 
-$(NAME): $(OBJS) $(LIBFT) $(MLXBUILD)
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLXBUILD) $(MLX42_FLAGS) 
+$(NAME): $(OBJS) $(LIBFT) $(MLX42)
+	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX42) $(MLX42_FLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -35,6 +34,7 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(LIBFT)
 	@$(MAKE) fclean -C ./libft
+	@$(MAKE) clean -C ./MLX42/build
 
 re: fclean all
 
