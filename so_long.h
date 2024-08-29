@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/28 15:36:11 by saylital         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:32:46 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,24 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <fcntl.h>
-# define WIDTH 1024
-# define HEIGHT 1024
-# define SIZE 35
+# define SIZE 150
 
 typedef struct s_texture
 {
-	mlx_texture	*floor;
-	mlx_texture	*wall;
-	mlx_texture	*exit;
-	mlx_texture	*player;
-	mlx_texture	*collect;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*player;
+	mlx_texture_t	*collect;
 }	t_texture;
 
 typedef struct s_image
 {
-	mlx_image	*floor;
-	mlx_image	*wall;
-	mlx_image	*exit;
-	mlx_image 	*player;
-	mlx_image	*collect;
+	mlx_image_t	*floor;
+	mlx_image_t	*wall;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
+	mlx_image_t	*collect;
 }	t_image;
 
 typedef struct s_game_data
@@ -52,8 +50,9 @@ typedef struct s_game_data
 	int			map_exit;
 	int			exit_found;
 	int			collectibles_found;
-	texture_t	*texture;
-	image_t		*image
+	mlx_t		*mlx;
+	t_texture	*texture;
+	t_image		*image;
 }	t_game_data;
 
 //check_map.c
@@ -66,7 +65,7 @@ void	parse_map(t_game_data *game);
 //validate_map_path
 void	validate_map_path(t_game_data *game);
 //game_graphics.c
-void	game_graphics(t_game_data *game, mlx_t, *mlx);
+void	game_graphics(t_game_data *game, mlx_t *mlx);
 //error_messages.c
 void	perror_malloc(void);
 void	perror_read(int fd);

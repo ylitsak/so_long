@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX42_FLAGS = -ldl -lglfw -pthread -lm
 INCLUDE = -I ./libft -I ./MLX42/include/MLX42
 SRCS = so_long.c check_map.c map_to_memory.c error_message.c utility_functions.c parse_map.c \
-		validate_map_path.c
+		validate_map_path.c game_graphics.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./libft/libft.a
 MLX42 = ./MLX42/build/libmlx42.a
