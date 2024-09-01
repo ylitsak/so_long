@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 10:24:38 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/29 14:33:28 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/01 19:19:41 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init_struct(t_game_data *game)
 	game->map_exit = 0;
 	game->collectibles_found = 0;
 	game->exit_found = 0;
+	game->move_count = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -40,7 +41,7 @@ int	main(int argc, char *argv[])
 	if (!game.mlx)
 		perror_map(game.map_2d, NULL, "mlx init failure");
 	game_graphics(&game, game.mlx);
-	//mlx_key_hook(game.mlx, handle_keypress, NULL);
+	mlx_key_hook(game.mlx, &handle_keypress, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_all(game.map_2d);

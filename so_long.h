@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/29 12:32:46 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/01 19:21:46 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_game_data
 	int			map_exit;
 	int			exit_found;
 	int			collectibles_found;
+	int			move_count;
 	mlx_t		*mlx;
 	t_texture	*texture;
 	t_image		*image;
@@ -66,6 +67,9 @@ void	parse_map(t_game_data *game);
 void	validate_map_path(t_game_data *game);
 //game_graphics.c
 void	game_graphics(t_game_data *game, mlx_t *mlx);
+int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x);
+//handle_keypress
+void	handle_keypress(mlx_key_data_t keydata, void *param);
 //error_messages.c
 void	perror_malloc(void);
 void	perror_read(int fd);

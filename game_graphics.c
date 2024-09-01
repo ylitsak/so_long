@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:05:59 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/29 12:58:58 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/01 18:51:45 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	load_images(t_game_data *game, mlx_t *mlx)
 	mlx_delete_texture(game->texture->player);
 	mlx_delete_texture(game->texture->collect);
 }
-static int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
+int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
 {
 	if (!mlx_resize_image(img, SIZE, SIZE))
 	{
