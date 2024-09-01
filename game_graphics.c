@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:05:59 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/01 18:51:45 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/01 21:31:54 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static void	load_textures(t_game_data *game)
 {
 	game->texture = ft_calloc(1, sizeof(t_texture));
-	if(!game->texture)
+	if (!game->texture)
 		perror_map(game->map_2d, NULL, "calloc fail textures");
 	game->texture->floor = mlx_load_png("./images/floor.png");
 	game->texture->wall = mlx_load_png("./images/wall.png");
 	game->texture->exit = mlx_load_png("./images/exit.png");
 	game->texture->player = mlx_load_png("./images/player.png");
 	game->texture->collect = mlx_load_png("./images/collectible.png");
-
 }
+
 static void	load_images(t_game_data *game, mlx_t *mlx)
 {
 	game->image = ft_calloc(1, sizeof(t_image));
-	if(!game->image)
+	if (!game->image)
 	{
 		mlx_delete_texture(game->texture->floor);
 		mlx_delete_texture(game->texture->wall);
@@ -47,6 +47,7 @@ static void	load_images(t_game_data *game, mlx_t *mlx)
 	mlx_delete_texture(game->texture->player);
 	mlx_delete_texture(game->texture->collect);
 }
+
 int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
 {
 	if (!mlx_resize_image(img, SIZE, SIZE))
@@ -74,17 +75,16 @@ static void	draw_images(t_game_data *game, char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if(map[y][x] == '1')
+			put_img_win(game->image->floor, game, y, x);
+			if (map[y][x] == '1')
 				put_img_win(game->image->wall, game, y, x);
-			else if (map[y][x] == '0')
-				put_img_win(game->image->floor, game, y, x);
 			else if (map[y][x] == 'E')
 				put_img_win(game->image->exit, game, y, x);
 			else if (map[y][x] == 'P')
 				put_img_win(game->image->player, game, y, x);
 			else if (map[y][x] == 'C')
 				put_img_win(game->image->collect, game, y, x);
-			x++;			
+			x++;
 		}
 		y++;
 	}
