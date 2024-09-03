@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 10:24:38 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 21:36:18 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:41:09 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_struct(t_game_data *game)
 	game->move_count = 0;
 }
 
-void	free_game_data(t_game_data *game)
+static void	free_game_data(t_game_data *game)
 {
 	if (game->image)
 	{

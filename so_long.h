@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 22:24:28 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:40:43 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ typedef struct s_game_data
 	t_image		*image;
 }	t_game_data;
 
-//so_long.c
-void	free_game_data(t_game_data *game);
 //check_map.c
 void	check_map(int argc, char *argv[], t_game_data *game);
 //map_to_memory.c
