@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:05:59 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 21:35:03 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:24:10 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	load_textures(t_game_data *game)
 		|| !game->texture->player || !game->texture->collect)
 	{
 		ft_printf("Error\nFailure loading textures\n");
-		rmv_texture(game);
+		rmv_textures(game);
 	}
 }
 
@@ -39,7 +39,7 @@ static void	load_images(t_game_data *game)
 	if (!game->image)
 	{
 		ft_printf("Error\ncalloc fail images\n");
-		rmv_texture(game);
+		rmv_textures(game);
 	}
 	game->image->wall = mlx_texture_to_image(mlx, game->texture->wall);
 	game->image->floor = mlx_texture_to_image(mlx, game->texture->floor);
@@ -55,7 +55,7 @@ static void	load_images(t_game_data *game)
 		|| !game->image->player || !game->image->collect)
 	{
 		ft_printf("Error\nFailure loading images\n");
-		rmv_image(game);
+		rmv_images(game);
 	}
 }
 
@@ -63,13 +63,13 @@ int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
 {
 	if (!mlx_resize_image(img, SIZE, SIZE))
 	{
-		mlx_delete_image(game->mlx, img);
-		perror_map(game->map_2d, NULL, "image to window failed");
+		ft_printf("Error\nput_img_win failed\n");
+		rmv_images(game);
 	}
 	if (mlx_image_to_window(game->mlx, img, x * SIZE, y * SIZE) == -1)
 	{
-		mlx_delete_image(game->mlx, img);
-		perror_map(game->map_2d, NULL, "image to window failed");
+		ft_printf("Error\nput_img_win failed\n");
+		rmv_images(game);
 	}
 	return (1);
 }

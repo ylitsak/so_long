@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 20:54:00 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:24:28 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_game_data
 	t_image		*image;
 }	t_game_data;
 
+//so_long.c
+void	free_game_data(t_game_data *game);
 //check_map.c
 void	check_map(int argc, char *argv[], t_game_data *game);
 //map_to_memory.c
@@ -74,7 +76,7 @@ void	handle_keypress(mlx_key_data_t keydata, void *param);
 void	perror_read(int fd);
 void	perror_map(char **map, char *map_1, char *message);
 void	free_all(char **free_data);
-void	rmv_texture(t_game_data *game);
-void	rmv_image(t_game_data *game);
+void	rmv_textures(t_game_data *game);
+void	rmv_images(t_game_data *game);
 
 #endif

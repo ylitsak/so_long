@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:55:03 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 20:59:09 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:24:19 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_all(char **free_data)
 	free(free_data);
 }
 
-void	rmv_texture(t_game_data *game)
+void	rmv_textures(t_game_data *game)
 {
 	if (game->texture->wall)
 		mlx_delete_texture(game->texture->wall);
@@ -59,7 +59,7 @@ void	rmv_texture(t_game_data *game)
 	exit(EXIT_FAILURE);
 }
 
-void	rmv_image(t_game_data *game)
+void	rmv_images(t_game_data *game)
 {
 	if (game->image->wall)
 		mlx_delete_image(game->mlx, game->image->wall);

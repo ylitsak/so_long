@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:22:16 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/01 21:57:00 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:07:58 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ static void	draw_previous_tile(t_game_data *game, int current_y, int current_x)
 		put_img_win(game->image->exit, game, current_y, current_x);
 	}
 	else
-	{
 		put_img_win(game->image->floor, game, current_y, current_x);
-	}
 }
 
 static void	draw_new_tile(t_game_data *game, int new_y, int new_x)
