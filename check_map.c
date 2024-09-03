@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 11:02:39 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/27 10:14:38 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:55:51 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static void	check_extra_newlines(char *map_1d)
 	int	i;
 
 	i = 0;
+	if (map_1d[0] == '\n')
+	{
+		ft_printf("Error\nMap contains extra newlines\n");
+		free(map_1d);
+		exit(EXIT_FAILURE);
+	}
 	while (map_1d[i])
 	{
 		if (map_1d[i] == '\n' && map_1d[i + 1] == '\n')

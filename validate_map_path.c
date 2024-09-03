@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 13:52:01 by saylital          #+#    #+#             */
-/*   Updated: 2024/08/26 14:32:29 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 20:25:29 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	valid_path(t_game_data *game)
 	game->exit_found = 0;
 	game->collectibles_found = 0;
 	dfs(game, map_copy, game->player_pos_x, game->player_pos_y);
-	// print_map(map_copy); //debugging info
 	if (game->collectibles_found == game->collectibles
 		&& game->exit_found == 1)
 	{
@@ -51,11 +50,7 @@ static int	valid_path(t_game_data *game)
 void	validate_map_path(t_game_data *game)
 {
 	if (valid_path(game))
-	{
-		printf("SUCCESS\n");
 		return ;
-	}
 	else
-		ft_printf("Error\nFailed to find valid path\n");
-	exit(EXIT_FAILURE);
+		perror_map(game->map_2d, NULL, "No valid path found\n");
 }

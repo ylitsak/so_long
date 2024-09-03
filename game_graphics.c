@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:05:59 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/01 21:31:54 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 21:35:03 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,24 @@ static void	load_textures(t_game_data *game)
 	game->texture->exit = mlx_load_png("./images/exit.png");
 	game->texture->player = mlx_load_png("./images/player.png");
 	game->texture->collect = mlx_load_png("./images/collectible.png");
+	if (!game->texture->floor || !game->texture->wall || !game->texture->exit
+		|| !game->texture->player || !game->texture->collect)
+	{
+		ft_printf("Error\nFailure loading textures\n");
+		rmv_texture(game);
+	}
 }
 
-static void	load_images(t_game_data *game, mlx_t *mlx)
+static void	load_images(t_game_data *game)
 {
+	mlx_t	*mlx;
+
+	mlx = game->mlx;
 	game->image = ft_calloc(1, sizeof(t_image));
 	if (!game->image)
 	{
-		mlx_delete_texture(game->texture->floor);
-		mlx_delete_texture(game->texture->wall);
-		mlx_delete_texture(game->texture->exit);
-		mlx_delete_texture(game->texture->player);
-		mlx_delete_texture(game->texture->collect);
-		perror_map(game->map_2d, NULL, "calloc fail images");
+		ft_printf("Error\ncalloc fail images\n");
+		rmv_texture(game);
 	}
 	game->image->wall = mlx_texture_to_image(mlx, game->texture->wall);
 	game->image->floor = mlx_texture_to_image(mlx, game->texture->floor);
@@ -46,6 +51,12 @@ static void	load_images(t_game_data *game, mlx_t *mlx)
 	mlx_delete_texture(game->texture->exit);
 	mlx_delete_texture(game->texture->player);
 	mlx_delete_texture(game->texture->collect);
+	if (!game->image->floor || !game->image->wall || !game->image->exit
+		|| !game->image->player || !game->image->collect)
+	{
+		ft_printf("Error\nFailure loading images\n");
+		rmv_image(game);
+	}
 }
 
 int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
@@ -90,12 +101,12 @@ static void	draw_images(t_game_data *game, char **map)
 	}
 }
 
-void	game_graphics(t_game_data *game, mlx_t *mlx)
+void	game_graphics(t_game_data *game)
 {
 	char	**map;
 
 	map = game->map_2d;
 	load_textures(game);
-	load_images(game, mlx);
+	load_images(game);
 	draw_images(game, map);
 }

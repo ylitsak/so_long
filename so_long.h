@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/01 21:21:49 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/03 20:54:00 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <fcntl.h>
-# define SIZE 150
+# define SIZE 100
 
 typedef struct s_texture
 {
@@ -66,16 +66,15 @@ void	parse_map(t_game_data *game);
 //validate_map_path
 void	validate_map_path(t_game_data *game);
 //game_graphics.c
-void	game_graphics(t_game_data *game, mlx_t *mlx);
-int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x);
+void	game_graphics(t_game_data *game);
+int		put_img_win(mlx_image_t *img, t_game_data *game, int y, int x);
 //handle_keypress
 void	handle_keypress(mlx_key_data_t keydata, void *param);
-//error_messages.c
-void	perror_malloc(void);
+//handle_errors.c
 void	perror_read(int fd);
 void	perror_map(char **map, char *map_1, char *message);
-//utility_functions.c
 void	free_all(char **free_data);
-void	print_map(char **map);
+void	rmv_texture(t_game_data *game);
+void	rmv_image(t_game_data *game);
 
 #endif
