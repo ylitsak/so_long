@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 22:40:43 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:59:26 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <fcntl.h>
-# define SIZE 100
+# define SIZE 80
 
 typedef struct s_texture
 {

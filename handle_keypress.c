@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:22:16 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 22:07:58 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:37:43 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ static void	move_player(t_game_data *game, int new_y, int new_x)
 		game->collectibles--;
 	}
 	if (game->map_2d[new_y][new_x] == 'E' && game->collectibles == 0)
-	{
 		mlx_close_window(game->mlx);
-		return ;
-	}
 	draw_previous_tile(game, current_y, current_x);
 	game->player_pos_y = new_y;
 	game->player_pos_x = new_x;

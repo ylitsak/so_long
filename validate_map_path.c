@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 13:52:01 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 20:25:29 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:02:22 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static int	valid_path(t_game_data *game)
 	char	**map_copy;
 
 	map_copy = ft_split(game->map_1d, '\n');
+	if (!map_copy)
+	{
+		free(game->map_1d);
+		ft_putstr_fd("Error\nft_split fail\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	free(game->map_1d);
 	game->exit_found = 0;
 	game->collectibles_found = 0;
@@ -52,5 +58,5 @@ void	validate_map_path(t_game_data *game)
 	if (valid_path(game))
 		return ;
 	else
-		perror_map(game->map_2d, NULL, "No valid path found\n");
+		perror_map(game->map_2d, NULL, "No valid path found");
 }

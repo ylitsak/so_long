@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:48:04 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/01 21:22:06 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:09:46 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	perror_element(t_game_data *game)
 {
 	if (game->player != 1)
-		ft_printf("Error\nInvalid player count: %d\n", game->player);
+		ft_putstr_fd("Error\nInvalid player count\n", 2);
 	if (game->collectibles < 1)
-		ft_printf("Error\nInvalid collectibles: %d\n", game->collectibles);
+		ft_putstr_fd("Error\nInvalid amount of collectibles\n", 2);
 	if (game->map_exit != 1)
-		ft_printf("Error\nInvalid exit count: %d\n", game->map_exit);
+		ft_putstr_fd("Error\nInvalid exit count\n", 2);
 	free(game->map_1d);
 	free_all(game->map_2d);
 	exit(EXIT_FAILURE);
@@ -33,7 +33,7 @@ static void	valid_map_element(t_game_data *game, char **map, int rows, int cols)
 		while (map[cols][rows])
 		{
 			if (!ft_strchr("01PEC", map[cols][rows]))
-				perror_map(map, game->map_1d, "Invalid characters in map\n");
+				perror_map(map, game->map_1d, "Invalid characters in map");
 			if (map[cols][rows] == 'P')
 			{
 				game->player += 1;
@@ -57,7 +57,7 @@ static void	wall_check(char **map, t_game_data *game, int rows, int cols)
 	while (map[0][rows])
 	{
 		if (map[0][rows] != '1')
-			perror_map(map, game->map_1d, "Map do not pass wall check\n");
+			perror_map(map, game->map_1d, "Map do not pass wall check");
 		rows++;
 	}
 	while (map[cols])
@@ -66,7 +66,7 @@ static void	wall_check(char **map, t_game_data *game, int rows, int cols)
 	while (map[cols - 1][rows])
 	{
 		if (map[cols - 1][rows] != '1')
-			perror_map(map, game->map_1d, "Map do not pass wall check\n");
+			perror_map(map, game->map_1d, "Map do not pass wall check");
 		rows++;
 	}
 	rows = ft_strlen(map[0]);
@@ -74,7 +74,7 @@ static void	wall_check(char **map, t_game_data *game, int rows, int cols)
 	while (map[cols])
 	{
 		if (map[cols][0] != '1' || map[cols][rows - 1] != '1')
-			perror_map(map, game->map_1d, "Map do not pass wall check\n");
+			perror_map(map, game->map_1d, "Map do not pass wall check");
 		cols++;
 	}
 }
@@ -87,14 +87,14 @@ static void	is_rectangular(t_game_data *game, char **map, int rows, int cols)
 	while (map[cols])
 		cols++;
 	if (cols < 2 || first_row < 2)
-		perror_map(map, game->map_1d, "Map is not rectangular\n");
+		perror_map(map, game->map_1d, "Map is not rectangular");
 	cols = 0;
 	while (map[cols])
 	{
 		rows = ft_strlen(map[cols]);
 		if (rows != first_row)
 		{
-			perror_map(map, game->map_1d, "Map is not rectangular\n");
+			perror_map(map, game->map_1d, "Map is not rectangular");
 		}
 		cols++;
 	}

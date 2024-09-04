@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:55:03 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 22:24:19 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 09:00:42 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	perror_read(int fd)
 
 void	perror_map(char **map, char *map_1, char *message)
 {
-	ft_printf("Error\n%s", message);
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(message, 2);
 	if (map_1 != NULL)
 		free(map_1);
 	free_all(map);

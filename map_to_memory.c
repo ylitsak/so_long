@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:58:08 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 20:24:05 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 09:55:16 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*store_map(char *map, int size)
 	buffer = malloc((size + 1) * sizeof(char));
 	if (!buffer)
 	{
-		ft_printf("Error\nMalloc failed\n");
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	bytes_read = read(fd, buffer, size);

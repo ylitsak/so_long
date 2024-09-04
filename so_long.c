@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 10:24:38 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/03 22:41:09 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:30:59 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static void	free_game_data(t_game_data *game)
 
 int	main(int argc, char *argv[])
 {
-	static t_game_data	game;
+	t_game_data	game;
 
-	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	init_struct(&game);
 	check_map(argc, argv, &game);
 	game.mlx = mlx_init(game.map_rows * SIZE, game.map_cols * SIZE,
