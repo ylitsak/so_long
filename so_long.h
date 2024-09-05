@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:02:40 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/04 11:59:26 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:23:35 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	parse_map(t_game_data *game);
 void	validate_map_path(t_game_data *game);
 //game_graphics.c
 void	game_graphics(t_game_data *game);
-int		put_img_win(mlx_image_t *img, t_game_data *game, int y, int x);
+void	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x);
 //handle_keypress
 void	handle_keypress(mlx_key_data_t keydata, void *param);
 //handle_errors.c

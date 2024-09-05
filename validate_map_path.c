@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 13:52:01 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/04 10:02:22 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:10:17 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,8 @@ static int	valid_path(t_game_data *game)
 
 	map_copy = ft_split(game->map_1d, '\n');
 	if (!map_copy)
-	{
-		free(game->map_1d);
-		ft_putstr_fd("Error\nft_split fail\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		perror_map(game->map_2d, game->map_1d, "ft_split fail");
 	free(game->map_1d);
-	game->exit_found = 0;
-	game->collectibles_found = 0;
 	dfs(game, map_copy, game->player_pos_x, game->player_pos_y);
 	if (game->collectibles_found == game->collectibles
 		&& game->exit_found == 1)

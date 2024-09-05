@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:05:59 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/04 11:40:12 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:32:59 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,18 @@ static void	load_images(t_game_data *game, mlx_t *mlx)
 	}
 }
 
-int	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
+void	put_img_win(mlx_image_t *img, t_game_data *game, int y, int x)
 {
 	if (!mlx_resize_image(img, SIZE, SIZE))
 	{
-		ft_putstr_fd("Error\nput_img_win failed\n", 2);
+		ft_putstr_fd("Error\nmlx_resize_image failed\n", 2);
 		rmv_images(game);
 	}
 	if (mlx_image_to_window(game->mlx, img, x * SIZE, y * SIZE) == -1)
 	{
-		ft_putstr_fd("Error\nput_img_win failed\n", 2);
+		ft_putstr_fd("Error\nmlx_image_to_window failed\n", 2);
 		rmv_images(game);
 	}
-	return (1);
 }
 
 static void	draw_images(t_game_data *game, char **map)
