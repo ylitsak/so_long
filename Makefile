@@ -11,7 +11,6 @@ MLX42 = ./MLX42/build/libmlx42.a
 
 all: $(NAME)
 
-
 $(LIBFT):
 	@$(MAKE) -C ./libft
 

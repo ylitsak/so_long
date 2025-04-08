@@ -6,7 +6,7 @@
 /*   By: saylital <saylital@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 11:02:39 by saylital          #+#    #+#             */
-/*   Updated: 2024/09/04 10:02:13 by saylital         ###   ########.fr       */
+/*   Updated: 2024/09/06 10:28:21 by saylital         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ void	check_map(int argc, char *argv[], t_game_data *game)
 	check_map_args(argc, argv);
 	game->map_size_buf = size_of_map(argv[1]);
 	game->map_1d = store_map(argv[1], game->map_size_buf);
+	if (game->map_1d[0] == '\0')
+	{
+		free(game->map_1d);
+		ft_putstr_fd("Error\nMap is empty\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	check_extra_newlines(game->map_1d);
 	game->map_2d = ft_split(game->map_1d, '\n');
 	if (!game->map_2d)
